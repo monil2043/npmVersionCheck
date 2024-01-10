@@ -19,7 +19,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: test
-        run: node -v
+        run: node -v && npm -v
 
       - name: Install dependencies
         working-directory: test
