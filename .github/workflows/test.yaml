@@ -19,7 +19,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: test
-        run: npm ci
+        run: npm install
 
       - name: Unit Test
         working-directory: test
