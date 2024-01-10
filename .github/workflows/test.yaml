@@ -18,13 +18,17 @@ jobs:
           python-version: 3.x
 
       - name: Install dependencies
+        working-directory: test
         run: npm ci
 
       - name: Unit Test
+        working-directory: test
         run: cdk --version
 
       - name: Unit Test
+        working-directory: test
         run: npm install
 
       - name: Unit Test
+        working-directory: test
         run: cdk --version
