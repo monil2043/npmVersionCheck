@@ -19,8 +19,12 @@ jobs:
 
       - name: Install dependencies
         working-directory: test
+        run: node -v
+
+      - name: Install dependencies
+        working-directory: test
         run: npm install
-        
+
       - name: Unit Test
         working-directory: test
         run: cdk --version
