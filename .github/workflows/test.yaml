@@ -17,20 +17,25 @@ jobs:
         with:
           python-version: 3.x
 
-      - name: Remove existing venv
-        run: make clean-venv
+      - name: run 
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install -r requirements.txt
 
-      - name: Create a new venv
-        run: make venv
+      # - name: Remove existing venv
+      #   run: make clean-venv
 
-      - name: activate venv
-        run: source ./venv/bin/activate
+      # - name: Create a new venv
+      #   run: make venv
 
-      # - name: check pytest version
-      #   run: pytest --version
+      # - name: activate venv
+      #   run: source ./venv/bin/activate
 
-      # - name: run unit test cases
-      #   run:  make unit
+      - name: check pytest version
+        run: pytest --version
+
+      - name: run unit test cases
+        run:  make unit
 
       - name: Set up AWS credentials
         run: |
