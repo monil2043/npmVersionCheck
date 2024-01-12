@@ -32,6 +32,9 @@ jobs:
 
       - name: check pytest version
         run: pytest --version
+
+      - name: unit tests
+        run: make unit
     
       - name: Display Python directories
         run: |
