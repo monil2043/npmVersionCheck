@@ -31,7 +31,7 @@ format:
 	yapf -d -vv --style=./.style -r .
 
 unit:
-	cp -r layers/mercuryReusableMethods venv/lib/python3.12/site-packages/
+	# cp -r layers/mercuryReusableMethods venv/lib/python3.12/site-packages/
 	pytest tests/unit --cov=. --cov-report xml
 
 
