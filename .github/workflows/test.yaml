@@ -46,13 +46,17 @@ jobs:
       - name: List venv contents
         run: |
           ls -R venv
-
+      # - name: Run tests
+      #   run: |
+      #       cd $GITHUB_WORKSPACE
+      #       pytest tests
       - name: Unit test
         run: |
           source venv/bin/activate
           command -v python
           cp -r layers/mercuryReusableMethods venv/lib/python3.12/site-packages/
           ls -R venv
+          cd /home/runner/work/npmVersionCheck
           pytest tests/unit --cov=. --cov-report xml
 
       # - name: unit tests
