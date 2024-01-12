@@ -38,8 +38,14 @@ jobs:
           ls -R venv
 
       - name: List npmVersionRepo directories
-        run: ls
+        run: ls -R
       
+      - name: copy contents from layer to venv
+        run: cp -r layers/mercuryReusableMethods venv/lib/python3.12/site-packages/
+      
+      - name: List venv contents
+        run: |
+          ls -R venv
 
       # - name: unit tests
       #   run: make unit
