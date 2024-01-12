@@ -37,12 +37,13 @@ jobs:
       #       pip install -r requirements.txt
 
       - name: node install
-        run: npm install -g aws-cdk
+        run: |
+          npm install -g aws-cdk
+          source ./venv/bin/activate
 
       - name: check pytest version
         run: |
           source ./venv/bin/activate
-          command -v python
           pytest --version
           cdk --version
 
