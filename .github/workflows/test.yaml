@@ -23,6 +23,9 @@ jobs:
       - name: Create a new venv
         run: make venv
 
+      - name: activate venv
+        run: source venv/bin/activate
+
       - name: run unit test cases
         run:  make unit
 
