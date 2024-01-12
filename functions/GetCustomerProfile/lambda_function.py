@@ -2,7 +2,18 @@ import json
 import os
 import boto3
 from botocore.exceptions import NoCredentialsError
-from mercuryReusableMethods.commonDependency import (
+# from mercuryReusableMethods.commonDependency import (
+#     call_api,
+#     validateEvent
+# )
+try:
+    from mercuryReusableMethods.commonDependency import (
+    call_api,
+    validateEvent
+)
+except ImportError:
+    # for local test
+    from layers.mercuryReusableMethods.commonDependency import (
     call_api,
     validateEvent
 )
