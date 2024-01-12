@@ -31,7 +31,7 @@ jobs:
             pip install -r requirements.txt
 
       - name: node install
-        run: npm ci
+        run: npm install -g aws-cdk
 
       - name: check pytest version
         run: |
