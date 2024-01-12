@@ -18,7 +18,9 @@ jobs:
           python-version: 3.x
           
       - name: Install system dependencies
-        run: make venv
+        run: |
+          make venv
+          source venv/bin/activate
           
       #     |
       #       sudo apt-get install -y python3-venv
