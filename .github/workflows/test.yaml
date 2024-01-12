@@ -47,6 +47,9 @@ jobs:
         run: |
           ls -R venv
 
+      - name: Unit test
+        run: make unit
+
       # - name: unit tests
       #   run: make unit
     
