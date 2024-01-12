@@ -1,0 +1,13 @@
+.DS_Store
+.vscode
+.venv
+.pytest_cache
+__pycache__
+node_modules
+cdk.out
+coverage.xml
+dev_requirements.txt
+lambda_requirements.txt
+.DS_Store
+.coverage
+venv
