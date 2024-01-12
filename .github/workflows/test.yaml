@@ -49,6 +49,7 @@ jobs:
 
       - name: Unit test
         run: |
+          source venv/bin/activate
           command -v python
           pytest tests/unit --cov=. --cov-report xml
 
