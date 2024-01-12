@@ -31,7 +31,9 @@ jobs:
             pip install -r requirements.txt
 
       - name: check pytest version
-        run: pytest --version
+        run: |
+          pytest --version
+          cdk --version
 
       - name: List venv contents
         run: |
