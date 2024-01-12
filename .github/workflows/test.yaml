@@ -17,27 +17,28 @@ jobs:
         with:
           python-version: 3.x
 
-      - name: Deploy to AWS
+      - name: Remove existing venv
+        run: make clean-venv
+
+      - name: Create a new venv
         run: make venv
 
-      - name: Deploy to AWS
+      - name: run unit test cases
         run:  make unit
 
+      - name: Set up AWS credentials
+        run: |
+          mkdir -p ~/.aws
+          touch ~/.aws/credentials
+          echo "[your-aws-profile]
+          aws_access_key_id = $AWS_ACCESS_KEY_ID
+          aws_secret_access_key = $AWS_SECRET_ACCESS_KEY" > ~/.aws/credentials
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets['AWS_ACCESS_KEY_ID'] }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets['AWS_SECRET_ACCESS_KEY'] }}
+
+
       - name: Deploy to AWS
-        run:  make deploy
-
-      # - name: Install dependencies
-      #   working-directory: test
-      #   run: npm install
-
-      # - name: Unit Test
-      #   working-directory: test
-      #   run: cdk --version
-
-      # - name: Unit Test
-      #   working-directory: test
-      #   run: npm install
-
-      # - name: Unit Test
-      #   working-directory: test
-      #   run: cdk --version
+        run: make deploy
+        env:
+          AWS_PROFILE: your-aws-profile
