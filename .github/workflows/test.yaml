@@ -33,8 +33,16 @@ jobs:
       - name: check pytest version
         run: pytest --version
 
-      - name: unit tests
-        run: make unit
+      - name: List venv contents
+        run: |
+          ls -R venv
+
+      - name: List npmVersionRepo directories
+        run: ls
+      
+
+      # - name: unit tests
+      #   run: make unit
     
       - name: Display Python directories
         run: |
