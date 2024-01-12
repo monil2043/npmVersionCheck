@@ -1,0 +1,27 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+aws-cdk-lib = "==2.118.0"
+constructs = "<11.0.0,>=10.0.0"
+"aws-cdk.aws-lambda-python-alpha" = "==2.118.0a0"
+boto3 = "*"
+cdk-nag = "*"
+cdk-monitoring-constructs = "*"
+"aws-cdk.aws-appconfig-alpha" = "*"
+pytest = "*"
+yapf = "*"
+radon = "*"
+flake8 = "*"
+isort = "*"
+requests = "*"
+pytest-cov = "*"
+aws-lambda-powertools = "*"
+aws-xray-sdk = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.12"

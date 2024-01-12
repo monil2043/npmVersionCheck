@@ -48,7 +48,9 @@ jobs:
           ls -R venv
 
       - name: Unit test
-        run: pytest tests/unit --cov=. --cov-report xml
+        run: |
+          command -v python
+          pytest tests/unit --cov=. --cov-report xml
 
       # - name: unit tests
       #   run: make unit
@@ -63,10 +65,6 @@ jobs:
             echo "-------------------------"
             python -m site
             echo "-------------------------"
-    
-      - name: Run tests
-        run: |
-            pytest --version
 
       # - name: run 
       #   run: |
@@ -88,19 +86,19 @@ jobs:
       # - name: run unit test cases
       #   run:  make unit
 
-      # - name: Set up AWS credentials
-      #   run: |
-      #     mkdir -p ~/.aws
-      #     touch ~/.aws/credentials
-      #     echo "[your-aws-profile]
-      #     aws_access_key_id = $AWS_ACCESS_KEY_ID
-      #     aws_secret_access_key = $AWS_SECRET_ACCESS_KEY" > ~/.aws/credentials
-      #   env:
-      #     AWS_ACCESS_KEY_ID: ${{ secrets['AWS_ACCESS_KEY_ID'] }}
-      #     AWS_SECRET_ACCESS_KEY: ${{ secrets['AWS_SECRET_ACCESS_KEY'] }}
+      - name: Set up AWS credentials
+        run: |
+          mkdir -p ~/.aws
+          touch ~/.aws/credentials
+          echo "[your-aws-profile]
+          aws_access_key_id = $AWS_ACCESS_KEY_ID
+          aws_secret_access_key = $AWS_SECRET_ACCESS_KEY" > ~/.aws/credentials
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets['AWS_ACCESS_KEY_ID'] }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets['AWS_SECRET_ACCESS_KEY'] }}
 
 
-      # - name: Deploy to AWS
-      #   run: make deploy
-      #   env:
-      #     AWS_PROFILE: your-aws-profile
+      - name: Deploy to AWS
+        run: make deploy
+        env:
+          AWS_PROFILE: your-aws-profile
