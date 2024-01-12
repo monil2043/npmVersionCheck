@@ -24,7 +24,7 @@ jobs:
         run: make venv
 
       - name: activate venv
-        run: source venv/bin/activate
+        run: source ./venv/bin/activate
 
       # - name: check pytest version
       #   run: pytest --version
