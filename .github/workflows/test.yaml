@@ -16,40 +16,68 @@ jobs:
         uses: actions/setup-python@v3
         with:
           python-version: 3.x
-
-      - name: run 
+          
+      - name: Install system dependencies
         run: |
-          python3 -m pip install --upgrade pip
-          python3 -m pip install -r requirements.txt
-
-      # - name: Remove existing venv
-      #   run: make clean-venv
-
-      # - name: Create a new venv
-      #   run: make venv
-
-      # - name: activate venv
-      #   run: source ./venv/bin/activate
-
-      - name: check pytest version
-        run: pytest --version
-
-      - name: run unit test cases
-        run:  make unit
-
-      - name: Set up AWS credentials
+            sudo apt-get install -y python3-venv
+    
+      - name: Create and activate venv
         run: |
-          mkdir -p ~/.aws
-          touch ~/.aws/credentials
-          echo "[your-aws-profile]
-          aws_access_key_id = $AWS_ACCESS_KEY_ID
-          aws_secret_access_key = $AWS_SECRET_ACCESS_KEY" > ~/.aws/credentials
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets['AWS_ACCESS_KEY_ID'] }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets['AWS_SECRET_ACCESS_KEY'] }}
+            python -m venv venv
+            source venv/bin/activate
+    
+      - name: Install dependencies
+        run: |
+            pip install -r requirements.txt
+    
+      - name: Display Python directories
+        run: |
+            echo "Previously installed Python directories:"
+            echo "-------------------------"
+            python -m site
+            echo "-------------------------"
+            echo "New virtual environment (venv) directories:"
+            echo "-------------------------"
+            python -m site
+            echo "-------------------------"
+    
+      - name: Run tests
+        run: |
+            pytest --version
+
+      # - name: run 
+      #   run: |
+      #     python3 -m pip install --upgrade pip
+      #     python3 -m pip install -r requirements.txt
+
+      # # - name: Remove existing venv
+      # #   run: make clean-venv
+
+      # # - name: Create a new venv
+      # #   run: make venv
+
+      # # - name: activate venv
+      # #   run: source ./venv/bin/activate
+
+      # - name: check pytest version
+      #   run: pytest --version
+
+      # - name: run unit test cases
+      #   run:  make unit
+
+      # - name: Set up AWS credentials
+      #   run: |
+      #     mkdir -p ~/.aws
+      #     touch ~/.aws/credentials
+      #     echo "[your-aws-profile]
+      #     aws_access_key_id = $AWS_ACCESS_KEY_ID
+      #     aws_secret_access_key = $AWS_SECRET_ACCESS_KEY" > ~/.aws/credentials
+      #   env:
+      #     AWS_ACCESS_KEY_ID: ${{ secrets['AWS_ACCESS_KEY_ID'] }}
+      #     AWS_SECRET_ACCESS_KEY: ${{ secrets['AWS_SECRET_ACCESS_KEY'] }}
 
 
-      - name: Deploy to AWS
-        run: make deploy
-        env:
-          AWS_PROFILE: your-aws-profile
+      # - name: Deploy to AWS
+      #   run: make deploy
+      #   env:
+      #     AWS_PROFILE: your-aws-profile
