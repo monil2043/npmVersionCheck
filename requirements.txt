@@ -1,0 +1,16 @@
+aws-cdk-lib==2.118.0
+constructs>=10.0.0,<11.0.0
+aws-cdk.aws-lambda-python-alpha==2.118.0a0
+boto3
+cdk-nag
+cdk-monitoring-constructs
+aws-cdk.aws-appconfig-alpha
+pytest
+yapf
+radon
+flake8
+isort
+requests
+pytest-cov
+aws_lambda_powertools
+aws_xray_sdk

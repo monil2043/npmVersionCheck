@@ -17,22 +17,27 @@ jobs:
         with:
           python-version: 3.x
 
-      - name: Install dependencies
-        working-directory: test
-        run: node -v && npm -v
+      - name: Deploy to AWS
+        run: make venv
 
-      - name: Install dependencies
-        working-directory: test
-        run: npm install
+      - name: Deploy to AWS
+        run:  make unit
 
-      - name: Unit Test
-        working-directory: test
-        run: cdk --version
+      - name: Deploy to AWS
+        run:  make deploy
 
-      - name: Unit Test
-        working-directory: test
-        run: npm install
+      # - name: Install dependencies
+      #   working-directory: test
+      #   run: npm install
 
-      - name: Unit Test
-        working-directory: test
-        run: cdk --version
+      # - name: Unit Test
+      #   working-directory: test
+      #   run: cdk --version
+
+      # - name: Unit Test
+      #   working-directory: test
+      #   run: npm install
+
+      # - name: Unit Test
+      #   working-directory: test
+      #   run: cdk --version

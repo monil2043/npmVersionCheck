@@ -1,0 +1,523 @@
+{
+  "version": "tree-0.1",
+  "tree": {
+    "id": "App",
+    "path": "",
+    "children": {
+      "BuildLambdaStack": {
+        "id": "BuildLambdaStack",
+        "path": "BuildLambdaStack",
+        "children": {
+          "BackendIntegrationLambdas": {
+            "id": "BackendIntegrationLambdas",
+            "path": "BuildLambdaStack/BackendIntegrationLambdas",
+            "children": {
+              "dev-AmzConnectInfraVpcStack--dev-AmzconnectInfraVpc": {
+                "id": "dev-AmzConnectInfraVpcStack--dev-AmzconnectInfraVpc",
+                "path": "BuildLambdaStack/BackendIntegrationLambdas/dev-AmzConnectInfraVpcStack--dev-AmzconnectInfraVpc",
+                "children": {
+                  "dev-AmzconnectInfraPublicSubnetSubnet1": {
+                    "id": "dev-AmzconnectInfraPublicSubnetSubnet1",
+                    "path": "BuildLambdaStack/BackendIntegrationLambdas/dev-AmzConnectInfraVpcStack--dev-AmzconnectInfraVpc/dev-AmzconnectInfraPublicSubnetSubnet1",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.118.0"
+                    }
+                  },
+                  "dev-AmzconnectInfraPublicSubnetSubnet2": {
+                    "id": "dev-AmzconnectInfraPublicSubnetSubnet2",
+                    "path": "BuildLambdaStack/BackendIntegrationLambdas/dev-AmzConnectInfraVpcStack--dev-AmzconnectInfraVpc/dev-AmzconnectInfraPublicSubnetSubnet2",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.118.0"
+                    }
+                  },
+                  "dev-AmzconnectInfraPublicSubnetSubnet3": {
+                    "id": "dev-AmzconnectInfraPublicSubnetSubnet3",
+                    "path": "BuildLambdaStack/BackendIntegrationLambdas/dev-AmzConnectInfraVpcStack--dev-AmzconnectInfraVpc/dev-AmzconnectInfraPublicSubnetSubnet3",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.118.0"
+                    }
+                  },
+                  "dev-AmzconnectInfraPrivateSubnetSubnet1": {
+                    "id": "dev-AmzconnectInfraPrivateSubnetSubnet1",
+                    "path": "BuildLambdaStack/BackendIntegrationLambdas/dev-AmzConnectInfraVpcStack--dev-AmzconnectInfraVpc/dev-AmzconnectInfraPrivateSubnetSubnet1",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.118.0"
+                    }
+                  },
+                  "dev-AmzconnectInfraPrivateSubnetSubnet2": {
+                    "id": "dev-AmzconnectInfraPrivateSubnetSubnet2",
+                    "path": "BuildLambdaStack/BackendIntegrationLambdas/dev-AmzConnectInfraVpcStack--dev-AmzconnectInfraVpc/dev-AmzconnectInfraPrivateSubnetSubnet2",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.118.0"
+                    }
+                  },
+                  "dev-AmzconnectInfraPrivateSubnetSubnet3": {
+                    "id": "dev-AmzconnectInfraPrivateSubnetSubnet3",
+                    "path": "BuildLambdaStack/BackendIntegrationLambdas/dev-AmzConnectInfraVpcStack--dev-AmzconnectInfraVpc/dev-AmzconnectInfraPrivateSubnetSubnet3",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.118.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.118.0"
+                }
+              },
+              "ServiceRoleArn": {
+                "id": "ServiceRoleArn",
+                "path": "BuildLambdaStack/BackendIntegrationLambdas/ServiceRoleArn",
+                "children": {
+                  "ImportServiceRoleArn": {
+                    "id": "ImportServiceRoleArn",
+                    "path": "BuildLambdaStack/BackendIntegrationLambdas/ServiceRoleArn/ImportServiceRoleArn",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.118.0"
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "BuildLambdaStack/BackendIntegrationLambdas/ServiceRoleArn/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                              ]
+                            ]
+                          },
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AWSLambdaVPCAccessExecutionRole"
+                              ]
+                            ]
+                          }
+                        ],
+                        "policies": [
+                          {
+                            "policyName": "dynamic_configuration",
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": [
+                                    "appconfig:GetLatestConfiguration",
+                                    "appconfig:StartConfigurationSession"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": "*"
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            }
+                          },
+                          {
+                            "policyName": "appconfig_full_access",
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": "appconfig:*",
+                                  "Effect": "Allow",
+                                  "Resource": "*"
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            }
+                          },
+                          {
+                            "policyName": "ssm_parameter_access",
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": "ssm:GetParameter",
+                                  "Effect": "Allow",
+                                  "Resource": "*"
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            }
+                          },
+                          {
+                            "policyName": "dynamodb_read_access",
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": [
+                                    "dynamodb:GetItem",
+                                    "dynamodb:Query",
+                                    "dynamodb:Scan"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": "*"
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.118.0"
+                    }
+                  },
+                  "DefaultPolicy": {
+                    "id": "DefaultPolicy",
+                    "path": "BuildLambdaStack/BackendIntegrationLambdas/ServiceRoleArn/DefaultPolicy",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "BuildLambdaStack/BackendIntegrationLambdas/ServiceRoleArn/DefaultPolicy/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                          "aws:cdk:cloudformation:props": {
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": [
+                                    "xray:PutTraceSegments",
+                                    "xray:PutTelemetryRecords"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": "*"
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "policyName": "BackendIntegrationLambdasServiceRoleArnDefaultPolicy76642D3D",
+                            "roles": [
+                              {
+                                "Ref": "BackendIntegrationLambdasServiceRoleArn52E72D9C"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                          "version": "2.118.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Policy",
+                      "version": "2.118.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.118.0"
+                }
+              },
+              "BackendIntegrationLambdascommon": {
+                "id": "BackendIntegrationLambdascommon",
+                "path": "BuildLambdaStack/BackendIntegrationLambdas/BackendIntegrationLambdascommon",
+                "children": {
+                  "Code": {
+                    "id": "Code",
+                    "path": "BuildLambdaStack/BackendIntegrationLambdas/BackendIntegrationLambdascommon/Code",
+                    "children": {
+                      "Stage": {
+                        "id": "Stage",
+                        "path": "BuildLambdaStack/BackendIntegrationLambdas/BackendIntegrationLambdascommon/Code/Stage",
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.AssetStaging",
+                          "version": "2.118.0"
+                        }
+                      },
+                      "AssetBucket": {
+                        "id": "AssetBucket",
+                        "path": "BuildLambdaStack/BackendIntegrationLambdas/BackendIntegrationLambdascommon/Code/AssetBucket",
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                          "version": "2.118.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                      "version": "2.118.0"
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "BuildLambdaStack/BackendIntegrationLambdas/BackendIntegrationLambdascommon/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::Lambda::LayerVersion",
+                      "aws:cdk:cloudformation:props": {
+                        "compatibleRuntimes": [
+                          "python3.12"
+                        ],
+                        "content": {
+                          "s3Bucket": "cdk-hnb659fds-assets-952848504641-us-west-2",
+                          "s3Key": "fe3a12b1a540e9081001897291e8e2b1c52dd64d517352541dd5c017991bc061.zip"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_lambda.CfnLayerVersion",
+                      "version": "2.118.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-lambda-python-alpha.PythonLayerVersion",
+                  "version": "2.118.0-alpha.0"
+                }
+              },
+              "BackendIntegrationLambdasAppConfigLayer": {
+                "id": "BackendIntegrationLambdasAppConfigLayer",
+                "path": "BuildLambdaStack/BackendIntegrationLambdas/BackendIntegrationLambdasAppConfigLayer",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.118.0"
+                }
+              },
+              "GetCustomerProfile": {
+                "id": "GetCustomerProfile",
+                "path": "BuildLambdaStack/BackendIntegrationLambdas/GetCustomerProfile",
+                "children": {
+                  "Code": {
+                    "id": "Code",
+                    "path": "BuildLambdaStack/BackendIntegrationLambdas/GetCustomerProfile/Code",
+                    "children": {
+                      "Stage": {
+                        "id": "Stage",
+                        "path": "BuildLambdaStack/BackendIntegrationLambdas/GetCustomerProfile/Code/Stage",
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.AssetStaging",
+                          "version": "2.118.0"
+                        }
+                      },
+                      "AssetBucket": {
+                        "id": "AssetBucket",
+                        "path": "BuildLambdaStack/BackendIntegrationLambdas/GetCustomerProfile/Code/AssetBucket",
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                          "version": "2.118.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                      "version": "2.118.0"
+                    }
+                  },
+                  "SecurityGroup": {
+                    "id": "SecurityGroup",
+                    "path": "BuildLambdaStack/BackendIntegrationLambdas/GetCustomerProfile/SecurityGroup",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "BuildLambdaStack/BackendIntegrationLambdas/GetCustomerProfile/SecurityGroup/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
+                          "aws:cdk:cloudformation:props": {
+                            "groupDescription": "Automatic security group for Lambda Function BuildLambdaStackBackendIntegrationLambdasGetCustomerProfile855AF1C9",
+                            "securityGroupEgress": [
+                              {
+                                "cidrIp": "0.0.0.0/0",
+                                "description": "Allow all outbound traffic by default",
+                                "ipProtocol": "-1"
+                              }
+                            ],
+                            "vpcId": "vpc-0871a5833d4002d02"
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_ec2.CfnSecurityGroup",
+                          "version": "2.118.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.SecurityGroup",
+                      "version": "2.118.0"
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "BuildLambdaStack/BackendIntegrationLambdas/GetCustomerProfile/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                      "aws:cdk:cloudformation:props": {
+                        "code": {
+                          "s3Bucket": "cdk-hnb659fds-assets-952848504641-us-west-2",
+                          "s3Key": "4eff3175096c8640f4fe79df225a07e5a3ce0971cb34ba52e02fe2092b932240.zip"
+                        },
+                        "environment": {
+                          "variables": {
+                            "RESOURCE_PATH": "/CustomerExperience/GetCustomerProfile",
+                            "MY_PARAMETER_ENV_VAR": "/merc-ins/backend-int/config-store"
+                          }
+                        },
+                        "functionName": "GetCustomerProfile",
+                        "handler": "lambda_function.lambda_handler",
+                        "layers": [
+                          {
+                            "Ref": "BackendIntegrationLambdasBackendIntegrationLambdascommon823BF76D"
+                          },
+                          "arn:aws:lambda:us-west-2:359756378197:layer:AWS-AppConfig-Extension:146"
+                        ],
+                        "memorySize": 128,
+                        "role": {
+                          "Fn::GetAtt": [
+                            "BackendIntegrationLambdasServiceRoleArn52E72D9C",
+                            "Arn"
+                          ]
+                        },
+                        "runtime": "python3.12",
+                        "timeout": 10,
+                        "tracingConfig": {
+                          "mode": "Active"
+                        },
+                        "vpcConfig": {
+                          "subnetIds": [
+                            "subnet-04b5b4b6ef03e3df5",
+                            "subnet-058391b4e87824c40",
+                            "subnet-0050ff21c0928208e"
+                          ],
+                          "securityGroupIds": [
+                            {
+                              "Fn::GetAtt": [
+                                "BackendIntegrationLambdasGetCustomerProfileSecurityGroupCF85C406",
+                                "GroupId"
+                              ]
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                      "version": "2.118.0"
+                    }
+                  },
+                  "EventInvokeConfig": {
+                    "id": "EventInvokeConfig",
+                    "path": "BuildLambdaStack/BackendIntegrationLambdas/GetCustomerProfile/EventInvokeConfig",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "BuildLambdaStack/BackendIntegrationLambdas/GetCustomerProfile/EventInvokeConfig/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::Lambda::EventInvokeConfig",
+                          "aws:cdk:cloudformation:props": {
+                            "functionName": {
+                              "Ref": "BackendIntegrationLambdasGetCustomerProfile738723DE"
+                            },
+                            "maximumRetryAttempts": 0,
+                            "qualifier": "$LATEST"
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_lambda.CfnEventInvokeConfig",
+                          "version": "2.118.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_lambda.EventInvokeConfig",
+                      "version": "2.118.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.Function",
+                  "version": "2.118.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.3.0"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "BuildLambdaStack/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "BuildLambdaStack/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.118.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.3.0"
+            }
+          },
+          "BootstrapVersion": {
+            "id": "BootstrapVersion",
+            "path": "BuildLambdaStack/BootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnParameter",
+              "version": "2.118.0"
+            }
+          },
+          "CheckBootstrapVersion": {
+            "id": "CheckBootstrapVersion",
+            "path": "BuildLambdaStack/CheckBootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnRule",
+              "version": "2.118.0"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "2.118.0"
+        }
+      },
+      "Tree": {
+        "id": "Tree",
+        "path": "Tree",
+        "constructInfo": {
+          "fqn": "constructs.Construct",
+          "version": "10.3.0"
+        }
+      }
+    },
+    "constructInfo": {
+      "fqn": "aws-cdk-lib.App",
+      "version": "2.118.0"
+    }
+  }
+}

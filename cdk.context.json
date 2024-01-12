@@ -1,0 +1,58 @@
+{
+  "vpc-provider:account=952848504641:filter.vpc-id=vpc-0871a5833d4002d02:region=us-west-2:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-0871a5833d4002d02",
+    "vpcCidrBlock": "10.0.0.0/24",
+    "ownerAccountId": "952848504641",
+    "availabilityZones": [],
+    "subnetGroups": [
+      {
+        "name": "dev-AmzconnectInfraPublicSubnet",
+        "type": "Public",
+        "subnets": [
+          {
+            "subnetId": "subnet-0e78ee7adeeff156a",
+            "cidr": "10.0.0.0/28",
+            "availabilityZone": "us-west-2a",
+            "routeTableId": "rtb-0d70a2e72825b728a"
+          },
+          {
+            "subnetId": "subnet-0e4896c6f2ae9a43d",
+            "cidr": "10.0.0.16/28",
+            "availabilityZone": "us-west-2b",
+            "routeTableId": "rtb-082ce80d923341627"
+          },
+          {
+            "subnetId": "subnet-0aec0f5c0db393991",
+            "cidr": "10.0.0.32/28",
+            "availabilityZone": "us-west-2c",
+            "routeTableId": "rtb-06035b0f5b2f5b748"
+          }
+        ]
+      },
+      {
+        "name": "dev-AmzconnectInfraPrivateSubnet",
+        "type": "Private",
+        "subnets": [
+          {
+            "subnetId": "subnet-04b5b4b6ef03e3df5",
+            "cidr": "10.0.0.48/28",
+            "availabilityZone": "us-west-2a",
+            "routeTableId": "rtb-0cc34917a87161483"
+          },
+          {
+            "subnetId": "subnet-058391b4e87824c40",
+            "cidr": "10.0.0.64/28",
+            "availabilityZone": "us-west-2b",
+            "routeTableId": "rtb-0e3efc10adea986ba"
+          },
+          {
+            "subnetId": "subnet-0050ff21c0928208e",
+            "cidr": "10.0.0.80/28",
+            "availabilityZone": "us-west-2c",
+            "routeTableId": "rtb-04ce16e866c53f796"
+          }
+        ]
+      }
+    ]
+  }
+}
