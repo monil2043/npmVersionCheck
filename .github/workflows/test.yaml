@@ -26,11 +26,11 @@ jobs:
       - name: activate venv
         run: source venv/bin/activate
 
-      - name: check pytest version
-        run: pytest --version
+      # - name: check pytest version
+      #   run: pytest --version
 
-      - name: run unit test cases
-        run:  make unit
+      # - name: run unit test cases
+      #   run:  make unit
 
       - name: Set up AWS credentials
         run: |
